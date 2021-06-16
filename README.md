@@ -1,3 +1,3 @@
-## WHO COVID-19 Global Region wise Reports Downloader.
+## WHO COVID-19 Global Region wise Reports Automation.
 ---
 

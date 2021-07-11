@@ -46,9 +46,8 @@ This BOT can scheduled using Task Scheduler as well.
 
 ### BOT Working Video
 
-<video width="640" height="480" controls>
-  <source src="WHO_COVID-19_Global_Cases_Images_Download_Automation.mp4" type="video/mp4">
-</video>
+https://user-images.githubusercontent.com/47080241/125203090-8a676080-e294-11eb-9237-fbd5a32ea0ea.mp4
+
 
 ## Contribution
 

@@ -32,7 +32,7 @@ def _accept_terms():
     try:
         cf.browser_wait_until_h(text='I ACCEPT')
         time.sleep(2)
-        cf.browser_mouse_click_h(User_Visible_Text_Element='I ACCEPT')
+        cf.browser_mouse_click_h(User_Visible_Text_Element='I ACCEPT',element='d')
     
     except Exception as e:
         print('Error in accept_terms = ', str(e))
@@ -40,7 +40,7 @@ def _accept_terms():
 def _redirect_to_regional_overview():
     try:
         cf.browser_mouse_hover_h(User_Visible_Text_Element='Regional Overview')
-        cf.browser_mouse_click_h(User_Visible_Text_Element='Regional Overview',to_left_of='Country/Area/Territory',to_right_of='Global Overview')
+        cf.browser_mouse_click_h(User_Visible_Text_Element='Regional Overview',element='d',to_left_of='Country/Area/Territory',to_right_of='Global Overview')
 
         cf.browser_wait_until_h(text='Regional Epidemic Curve')
 
@@ -75,8 +75,8 @@ def _organize_regional_data(option='',type=''):
 
 def _download_regional_cases_data(option=''):
     try:
-        cf.browser_mouse_click_h('CASES')
-        cf.browser_mouse_click_h('DOWNLOAD PLOT')
+        cf.browser_mouse_click_h('CASES',element='d')
+        cf.browser_mouse_click_h('DOWNLOAD PLOT',element='d',)
         _organize_regional_data(option,type='CASES')
 
     except Exception as e:
@@ -84,8 +84,8 @@ def _download_regional_cases_data(option=''):
 
 def _download_regional_deaths_data(option=''):
     try:
-        cf.browser_mouse_click_h('DEATHS')
-        cf.browser_mouse_click_h('DOWNLOAD PLOT')
+        cf.browser_mouse_click_h('DEATHS',element='d')
+        cf.browser_mouse_click_h('DOWNLOAD PLOT',element='d')
         _organize_regional_data(option,type='DEATHS')
 
 
@@ -103,8 +103,8 @@ def download_regional_overview_reports():
             else:
                 prev_option = GLOBAL_REGIONS[GLOBAL_REGIONS.index(option) - 1]
             
-            cf.browser_mouse_click_h(prev_option)
-            cf.browser_mouse_click_h(option)
+            cf.browser_mouse_click_h(prev_option,element='d')
+            cf.browser_mouse_click_h(option,element='d')
             time.sleep(2)
 
             _download_regional_cases_data(option)
@@ -133,31 +133,32 @@ def send_outlook_email():
         outlook_password = outlook_details.get('password')
 
         cf.browser_navigate_h('outlook.com')
-        cf.browser_mouse_click_h('Sign in')
+        cf.browser_mouse_click_h('Sign in',element='d')
 
         cf.browser_write_h(outlook_username,User_Visible_Text_Element='Email, phone, or Skype')
-        cf.browser_mouse_click_h('Next')
+        cf.browser_mouse_click_h('Next',element='d')
 
         cf.browser_write_h(outlook_password,User_Visible_Text_Element='Password')
-        cf.browser_mouse_click_h('Sign in')
+        cf.browser_mouse_click_h('Sign in',element='d')
 
-        cf.browser_mouse_click_h('New message')
+        cf.browser_mouse_click_h('New message',element='d')
 
         time.sleep(2)
-        cf.browser_write_h('fharookshaik.clointfusion@gmail.com',User_Visible_Text_Element='To')
+        to_email = cf.gui_get_any_input_from_user('Enter to email: ')
+        cf.browser_write_h(to_email,User_Visible_Text_Element='To')
 
         cf.browser_write_h('WHO COVID-19 Global Regional Reports',User_Visible_Text_Element='Add a subject')
 
         body_elem = cf.browser_locate_element_h("//*[@aria-label='Message body']")
-        cf.browser_write_h('Please find the attached Reports.\n\n\nThanks & Regards\nfharookshaik',User_Visible_Text_Element=body_elem)
+        cf.browser_write_h('Please find the attached Reports.\n\n\nThanks & Regards\nWHO COVID-19 BOT',User_Visible_Text_Element=body_elem)
 
-        cf.browser_mouse_click_h(User_Visible_Text_Element='Attach')
-        cf.browser_mouse_click_h(User_Visible_Text_Element='Browse this computer')
+        cf.browser_mouse_click_h(User_Visible_Text_Element='Attach',element='d')
+        cf.browser_mouse_click_h(User_Visible_Text_Element='Browse this computer',element='d')
         cf.key_write_enter(strMsg=REPORTS_ZIP)
 
         time.sleep(5)
 
-        cf.browser_mouse_click_h('Send')
+        cf.browser_mouse_click_h('Send',element='d')
 
     except Exception as e:
         print('Error in Sending Outlook Email = ',str(e))

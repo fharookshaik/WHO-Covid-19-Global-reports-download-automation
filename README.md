@@ -29,7 +29,7 @@ This BOT can do the following
 - Make sure You've installed `Python>=3.8` version
 -  Clone this Repository.
 ```
-git clone "https://github.com/fharookshaik/"
+git clone "https://github.com/fharookshaik/WHO-Covid-19-Global-reports-download-automation"
 ```
 - Install the dependents from `requirements.txt` 
 ```
